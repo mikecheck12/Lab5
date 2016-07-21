@@ -197,22 +197,6 @@ public:
 	}
 
 //Find Function
-	/*
-	int find(const ItemType& item) {
-		int counter = 0;
-		Node* temp = head;
-		if (temp->item == item) {
-			return counter;
-		}
-		else {
-			temp = temp->next
-		}
-
-
-		return -1;
-
-	}
-	*/
 
 	int find(const ItemType& item) {
 		int counter = 0;
