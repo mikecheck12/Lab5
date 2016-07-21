@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+
+using namespace std;
 
 template <typename ItemType>
 
@@ -90,6 +93,7 @@ public:
 	}
 
 //insert items inside the list
+	//does temp need to be deleted at the end of the function?
 	void insert(int index, const ItemType& item) {
 		
 		int count = 0;
@@ -121,12 +125,77 @@ public:
 		}
 	}
 
+//remove from the front of the list
+	ItemType pop_front() {
+		//if (head == NULL) {
+		//	return;
+		//}
+		//else {
+			Node* removeNode = head;
+			ItemType item = head->item;
+			head = head->next;
+			delete removeNode;
+			if (head != NULL) {
+				head->prev = NULL;
+			}
+			else {
+				tail = NULL;
+			}
+			size--;
+			return item;
+		//}
+	}
+
+// remove from the end of the list
+	ItemType pop_back() {
+		Node* removeNode = tail;
+		ItemType item = tail->item;
+		tail = tail->prev;
+		delete removeNode;
+		tail->next = NULL;
+		size--;
+		return item;
+	}
+
 //Remove function
 	ItemType remove(int index) {
+		
+		int count = 0;
+		Node* temp = head;
 
-		return ItemType();
 
+		if (index < 0 || index > size - 1) {
+			cout << "remove " << index << endl;
+			return ItemType();
+		}
+		else {
+			while (count != index) {
+				temp = temp->next;
+				count++;
+			}
+
+			if (index == 0) {
+				cout << "remove " << index << " " << head->item << endl;
+				return pop_front();
+			}
+			else if (index == size - 1) {
+				cout << "remove " << index << " " << tail->item << endl;
+				return pop_back();
+			}
+			else {
+				cout << "remove " << index << " " << temp->item << endl;
+				Node* removeNode = temp;
+				ItemType item = temp->item;
+				removeNode->prev->next = removeNode->next;
+				removeNode->next->prev = removeNode->prev;
+				delete removeNode;
+				size--;
+				return item;
+
+			}
+		}
 	}
+
 //Find Function
 	int find(const ItemType& item) {
 
@@ -134,19 +203,17 @@ public:
 
 	}
 //Output function
-	void print() {
+	void print(ofstream& out) {
 		int count = 0;
 		Node* temp = head;
 
 		//while (temp != NULL) {
-		cout << "print" << endl;
+		out << "print" << size << endl;
 		while(count < size){
-			cout << "node" << " " << count << ": " << temp->item << endl;
+			out << "node" << " " << count << ": " << temp->item << endl;
 			temp = temp->next;
 			count++;
 		}
-		
-
 	}
 
 
