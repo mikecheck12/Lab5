@@ -39,7 +39,7 @@ public:
 	}
 
 	//List Destructor
-	~LinkedList() {};
+	~LinkedList() {clear();};
 
 
 //Clear function
@@ -83,7 +83,7 @@ public:
 //insert items on back of list
 	void push_back(const ItemType& item) {
 		if (tail != NULL) {
-			tail->next = new Node(item, NULL, head);
+			tail->next = new Node(item, NULL, tail);
 			tail = tail->next;
 			size++;
 		}
