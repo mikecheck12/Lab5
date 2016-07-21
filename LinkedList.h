@@ -197,18 +197,46 @@ public:
 	}
 
 //Find Function
+	/*
 	int find(const ItemType& item) {
+		int counter = 0;
+		Node* temp = head;
+		if (temp->item == item) {
+			return counter;
+		}
+		else {
+			temp = temp->next
+		}
+
 
 		return -1;
 
 	}
+	*/
+
+	int find(const ItemType& item) {
+		int counter = 0;
+		Node* temp = head;
+		while (counter < size) {
+			if (temp->item == item) {
+				return counter;
+			}
+			else {
+				temp = temp->next;
+				counter++;
+			}
+
+		}
+		return -1;
+	}
+
 //Output function
 	void print(ofstream& out) {
 		int count = 0;
 		Node* temp = head;
 
 		//while (temp != NULL) {
-		out << "print" << size << endl;
+		out << "print" << endl;
 		while(count < size){
 			out << "node" << " " << count << ": " << temp->item << endl;
 			temp = temp->next;

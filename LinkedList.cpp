@@ -14,7 +14,7 @@ int main() {
 	string item;
 
 	ifstream in;
-	in.open("in52.txt");
+	in.open("in53.txt");
 
 	ofstream out;
 	out.open("actual.txt");
@@ -36,7 +36,7 @@ int main() {
 		}
 		if (cmd == "find") {
 			in >> item;
-			list.find(item);
+			out << "find " << item << " " << list.find(item) << endl;
 		}
 		if (cmd == "print") {
 			list.print(out);
