@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int main() {
+int main(int argc, char* argv[]) {
 
 	LinkedList<string> list;
 	string cmd;
@@ -14,10 +14,10 @@ int main() {
 	string item;
 
 	ifstream in;
-	in.open("in53.txt");
+	in.open(argv[1]);
 
 	ofstream out;
-	out.open("actual.txt");
+	out.open(argv[2]);
 
 	while (in >> cmd) {
 		if (cmd == "clear") {
@@ -45,6 +45,5 @@ int main() {
 
 	out.close();
 
-	system("pause");
 	return 0;
 }
