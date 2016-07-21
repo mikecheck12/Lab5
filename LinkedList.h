@@ -51,7 +51,7 @@ public:
 			}
 			tail = NULL;
 			size = 0;
-			cout << "clear" << endl;
+			//cout << "clear" << endl;
 	}
 
 //Initial Item
@@ -99,7 +99,7 @@ public:
 		int count = 0;
 		Node* temp = head;
 
-		cout << "insert " << index << " " << item << endl;
+		//cout << "insert " << index << " " << item << endl;
 
 		if (index < 0 || index > size) {
 			//not valid
@@ -165,7 +165,7 @@ public:
 
 
 		if (index < 0 || index > size - 1) {
-			cout << "remove " << index << endl;
+			//cout << "remove " << index << endl;
 			return ItemType();
 		}
 		else {
@@ -175,15 +175,15 @@ public:
 			}
 
 			if (index == 0) {
-				cout << "remove " << index << " " << head->item << endl;
+				//cout << "remove " << index << " " << head->item << endl;
 				return pop_front();
 			}
 			else if (index == size - 1) {
-				cout << "remove " << index << " " << tail->item << endl;
+				//cout << "remove " << index << " " << tail->item << endl;
 				return pop_back();
 			}
 			else {
-				cout << "remove " << index << " " << temp->item << endl;
+				//cout << "remove " << index << " " << temp->item << endl;
 				Node* removeNode = temp;
 				ItemType item = temp->item;
 				removeNode->prev->next = removeNode->next;
